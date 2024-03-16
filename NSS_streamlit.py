@@ -22,6 +22,12 @@ def obj(facteur):
     scr = np.sum(e)
     return scr
 
+def download_excel():
+    transposed_data.to_excel("selected_data.xlsx", index=False)
+    with open("selected_data.xlsx", "rb") as file:
+        btn = file.read()
+    return btn
+
 # Streamlit UI
 st.title("Nelson Siegel Svensson Model")
 
@@ -96,6 +102,11 @@ with col2:
     ax.set_ylabel('Taux')
     ax.legend()
     st.pyplot(fig)
+
+selected_data = data[['Maturité', 'Taux estimes opt']]
+transposed_data = selected_data.T
+st.dataframe(transposed_data)
+st.download_button(label="Download data as Excel", data=download_excel(), file_name="selected_data.xlsx", mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
  
 
 # Print optimized parameters as whole numbers
