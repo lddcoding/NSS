@@ -39,7 +39,9 @@ def download_excel():
     return btn
 
 # Streamlit UI
+st.image("heconomie.jpg")
 st.title("Nelson Siegel Svensson Model")
+st.write("Made by the Fixed Income Team of HEConomie")
 
 # File uploader
 uploaded_file = st.file_uploader("Upload Excel file", type=["xlsx", "xls"])
